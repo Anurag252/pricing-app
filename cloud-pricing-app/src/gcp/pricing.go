@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"os"
 
 	"cloud-pricing-app/src/db"
 )
@@ -20,7 +21,7 @@ type PricingInfo struct {
 }
 
 func FetchAndUpdateGCPPricesList() (*PricingInfo, error) {
-	apiKey := "AIzaSyCttN5-b7tRo-g2rX7Y6bnyB-4G5swe_oc"
+	apiKey := os.Getenv("APIKEYGOOGLE")
 	pageSize := 1000
 	var nextPageToken string
 	var pricingInfo PricingInfo
@@ -65,8 +66,7 @@ func FetchAndUpdateGCPPricesList() (*PricingInfo, error) {
 	}
 
 	//pageSize := "1000"
-	//pagetoken := ""
-	//apiKey := "AIzaSyCttN5-b7tRo-g2rX7Y6bnyB-4G5swe_oc"
+	//pagetoken := "
 	url := fmt.Sprintf("https://cloudbilling.googleapis.com/v1/services/6F81-5844-456A/skus?key=%s&pageSize=%v", apiKey, pageSize)
 	resp, err := http.Get(url)
 	if err != nil {

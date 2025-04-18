@@ -10,7 +10,7 @@ import (
 )
 
 const (
-	dbURL    = "postgresql://postgres.%s:fO24aoA1V5b9wkMp@aws-0-us-west-1.pooler.supabase.com:6543/postgres"
+	dbURL    = "postgresql://postgres.%s@aws-0-us-west-1.pooler.supabase.com:6543/postgres"
 	pageSize = 20 // Number of records per page
 )
 
